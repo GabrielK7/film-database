@@ -1,17 +1,20 @@
 package sk.film.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import sk.film.dto.PersonDTO;
+import sk.film.service.PersonService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 public class PersonController {
+    @Autowired
+    PersonService personService;
 
     @PostMapping({"/people/", "/people"})
-    public void addPerson(){
-        System.out.println("PEOPLE");
+    public PersonDTO addPerson(@RequestBody PersonDTO personDTO) {
+
+       return personService.addPerson(personDTO);
     }
 }
