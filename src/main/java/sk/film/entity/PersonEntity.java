@@ -3,6 +3,7 @@ package sk.film.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import sk.film.constant.RoleType;
 
 import java.util.Date;
 
@@ -23,6 +24,7 @@ public class PersonEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private  String biography;
     @Column(nullable = false)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 
 }

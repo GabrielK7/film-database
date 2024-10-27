@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sk.film.constant.RoleType;
 
 import java.util.Date;
 
@@ -22,6 +23,6 @@ public class PersonDTO {
 
     private String biography;
 
-    private String role;
+    private RoleType role;
 
 }
