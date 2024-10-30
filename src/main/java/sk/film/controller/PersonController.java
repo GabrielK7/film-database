@@ -18,15 +18,31 @@ public class PersonController {
     @PostMapping({"/people/", "/people"})
     public PersonDTO addPerson(@RequestBody PersonDTO personDTO) {
 
-       return personService.addPerson(personDTO);
+        return personService.addPerson(personDTO);
     }
-@GetMapping(value = {"/actors", "/actors/"})
-    public List<PersonDTO> getActors(@RequestParam int limit){
-return  personService.getPeople(RoleType.actor, limit);
+
+    @GetMapping(value = {"/actors", "/actors/"})
+    public List<PersonDTO> getActors(@RequestParam(required = false, defaultValue = Integer.MAX_VALUE + "") int limit) {
+        return personService.getPeople(RoleType.actor, limit);
     }
 
     @GetMapping(value = {"/directors", "/directors/"})
-    public List<PersonDTO> getDirectors(@RequestParam int limit){
-        return  personService.getPeople(RoleType.director, limit);
+    public List<PersonDTO> getDirectors(@RequestParam(required = false, defaultValue = Integer.MAX_VALUE + "") int limit) {
+        return personService.getPeople(RoleType.director, limit);
+    }
+
+    @GetMapping("/people/{personId}")
+    public PersonDTO getPerson(@PathVariable Long personId) {
+        return personService.getPerson(personId);
+    }
+
+    @PutMapping({"/people/{personId}", "/people/{personId}/"})
+    public PersonDTO editPerson(@PathVariable Long personId, @RequestBody PersonDTO personDTO) {
+        return personService.editPerson(personId, personDTO);
+    }
+
+    @DeleteMapping({"/people/{personId}", "/people/{personId}/"})
+    public PersonDTO deletePerson(@PathVariable Long personId) {
+        return personService.removePerson(personId);
     }
 }

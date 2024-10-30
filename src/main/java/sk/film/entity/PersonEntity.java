@@ -6,9 +6,10 @@ import lombok.Setter;
 import sk.film.constant.RoleType;
 
 import java.util.Date;
+import java.util.List;
 
 
-@Entity
+@Entity(name = "person")
 @Getter
 @Setter
 public class PersonEntity {
@@ -26,5 +27,9 @@ public class PersonEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleType role;
+    @OneToMany(mappedBy = "director")
+    private List<MovieEntity> directedMovies;
+    @ManyToMany(mappedBy = "actors")
+    private List<MovieEntity> actedInMovies;
 
 }
