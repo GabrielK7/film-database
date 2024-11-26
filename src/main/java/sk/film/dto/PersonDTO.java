@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 import sk.film.constant.RoleType;
 
 import java.util.Date;
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+
 public class PersonDTO {
     @JsonProperty("_id")
     private long id;

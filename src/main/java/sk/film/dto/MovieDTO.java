@@ -30,4 +30,9 @@ public class MovieDTO {
     private Date dateAdded;
     private PersonDTO director;
     private List<PersonDTO> actors;
+    @JsonProperty("isAvailable")
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
 }

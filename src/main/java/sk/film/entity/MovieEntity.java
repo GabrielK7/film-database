@@ -17,20 +17,23 @@ public class MovieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     @ManyToOne
     private PersonEntity director;
     @ManyToMany
     @JoinTable(name = "actors",
             joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id")
-
-    )
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<PersonEntity> actors;
-    private boolean isAvailable;
     @ElementCollection
     private List<String> genres;
     private Integer year;
+    private boolean isAvailable;
+
+    @Column(nullable = false)
     private Date dateAdded = new Date();
+
+
 
 }
